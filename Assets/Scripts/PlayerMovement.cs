@@ -1,29 +1,21 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 5f;
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 7.5f;
     public float jumpForce = 7f;
-    public InputActionReference sprintAction;
-
-    //public AudioSource audioSource;
-    //public AudioClip walkClip;
-    //public AudioClip sprintClip;
-    public float stepRate = 0.4f;
-    public float sprintStepRate = 0.25f;
 
     private Vector2 movementInput;
     private Rigidbody rb;
     private bool isGrounded;
-    private float stepTimer;
-
-    //private Note currentNote;
+    private bool isSprinting;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     private void FixedUpdate()
@@ -46,58 +38,30 @@ public class PlayerMovement : MonoBehaviour
         movementInput = data.Get<Vector2>();
     }
 
+    public void OnSprint(InputValue data)
+    {
+        isSprinting = data.isPressed;
+    }
+
     public void OnJump(InputValue data)
     {
+        if (!data.isPressed) return;
         if (!isGrounded) return;
+
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
     }
 
     void MovePlayer()
     {
-        bool isSprinting = sprintAction.action.IsPressed();
+        float currentSpeed = isSprinting ? sprintSpeed : walkSpeed;
+
         Vector3 direction = transform.right * movementInput.x + transform.forward * movementInput.y;
+        direction = direction.normalized;
 
-        movementSpeed = isSprinting ? 7.5f : 5f;
-        rb.linearVelocity = new Vector3(direction.x * movementSpeed, rb.linearVelocity.y, direction.z * movementSpeed);
-
-        //HandleFootsteps(isSprinting, direction);
+        rb.linearVelocity = new Vector3(
+            direction.x * currentSpeed,
+            rb.linearVelocity.y,
+            direction.z * currentSpeed
+        );
     }
-
-    //private void HandleFootsteps(bool isSprinting, Vector3 direction)
-    //{
-    //    bool isMoving = direction.magnitude > 0.1f && isGrounded;
-
-    //    if (isMoving)
-    //    {
-    //        stepTimer -= Time.fixedDeltaTime;
-
-    //        if (stepTimer <= 0f)
-    //        {
-    //            AudioClip clipToPlay = isSprinting ? sprintClip : walkClip;
-    //            audioSource.PlayOneShot(clipToPlay);
-    //            stepTimer = isSprinting ? sprintStepRate : stepRate;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        stepTimer = 0f;
-    //    }
-    //}
-
-
-    //public void SetCurrentNote(Note note)
-    //{
-    //    currentNote = note;
-    //}
-
-
-    //public void OnCollectObject()
-    //{
-
-    //    if (currentNote != null)
-    //    {
-    //        currentNote.CollectNote();
-    //        currentNote = null;
-    //    }
-    //}
 }
