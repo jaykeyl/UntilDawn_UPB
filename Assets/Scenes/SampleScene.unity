@@ -246,13 +246,15 @@ MonoBehaviour:
   - {fileID: 2106708236}
   - {fileID: 1544131929}
   waitTimeAtPoint: 2
+  lookAroundAngle: 45
+  lookAroundSpeed: 2
   player: {fileID: 61669600}
   playerCamera: {fileID: 1170789363}
   proximityDetectionRange: 5
   visionDetectionRange: 8
   fieldOfView: 90
-  chaseSpeed: 4.5
   patrolSpeed: 2.5
+  chaseSpeed: 4.5
   losePlayerDistance: 12
   flashlight: {fileID: 847919867}
   alertAudio: {fileID: 205463471}
@@ -588,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576949857}
   m_Layer: 0
-  m_Name: G1_Point_02
+  m_Name: R1_Point_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -619,7 +621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818287318}
   m_Layer: 0
-  m_Name: GuardPoints
+  m_Name: PatrolRoutes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181069019}
   m_Layer: 0
-  m_Name: G1_Point_04
+  m_Name: R1_Point_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,7 +959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480244658}
   m_Layer: 0
-  m_Name: G1_Point_01
+  m_Name: R1_Point_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1031,15 +1033,17 @@ MonoBehaviour:
   - {fileID: 576949857}
   - {fileID: 1943803553}
   - {fileID: 1181069019}
-  waitTimeAtPoint: 2
+  waitTimeAtPoint: 2.5
+  lookAroundAngle: 45
+  lookAroundSpeed: 2
   player: {fileID: 61669600}
   playerCamera: {fileID: 1170789363}
-  proximityDetectionRange: 5
-  visionDetectionRange: 8
-  fieldOfView: 90
-  chaseSpeed: 4.5
+  proximityDetectionRange: 7.5
+  visionDetectionRange: 12
+  fieldOfView: 110
   patrolSpeed: 2.5
-  losePlayerDistance: 12
+  chaseSpeed: 4.5
+  losePlayerDistance: 16
   flashlight: {fileID: 1981397377}
   alertAudio: {fileID: 1484266239}
 --- !u!82 &1484266239
@@ -1171,7 +1175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1544131929}
   m_Layer: 0
-  m_Name: G2_Point_04
+  m_Name: R2_Point_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,7 +1206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1623411738}
   m_Layer: 0
-  m_Name: Guard_01_Points
+  m_Name: Route_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1394,7 +1398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753927742}
   m_Layer: 0
-  m_Name: G2_Point_01
+  m_Name: R2_Point_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1425,7 +1429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1759127370}
   m_Layer: 0
-  m_Name: G2_Point_02
+  m_Name: R2_Point_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1943803553}
   m_Layer: 0
-  m_Name: G1_Point_03
+  m_Name: R1_Point_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1614,7 +1618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2025405218}
   m_Layer: 0
-  m_Name: Guard_02_Points
+  m_Name: Route_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1711,7 +1715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106708236}
   m_Layer: 0
-  m_Name: G2_Point_03
+  m_Name: R2_Point_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
